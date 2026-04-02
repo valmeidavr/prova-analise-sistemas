@@ -6,7 +6,7 @@ import { BookOpen, Clock, FileText, Star, ArrowRight, Loader2 } from "lucide-rea
 
 export default function Home() {
   const router = useRouter();
-  const [form, setForm] = useState({ nome: "", email: "", turma: "" });
+  const [form, setForm] = useState({ nome: "", email: "", turma: "2INF" });
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [apiError, setApiError] = useState("");
@@ -17,7 +17,6 @@ export default function Home() {
     if (!form.email.trim()) errs.email = "Email é obrigatório";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
       errs.email = "Email inválido";
-    if (!form.turma.trim()) errs.turma = "Turma é obrigatória";
     return errs;
   }
 
@@ -127,27 +126,6 @@ export default function Home() {
               />
               {errors.email && (
                 <p className="text-red-500 text-xs mt-1">{errors.email}</p>
-              )}
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                Turma
-              </label>
-              <input
-                type="text"
-                placeholder="Ex: 2INF"
-                value={form.turma}
-                onChange={(e) => {
-                  setForm({ ...form, turma: e.target.value });
-                  setErrors({ ...errors, turma: "" });
-                }}
-                className={`w-full px-4 py-3 rounded-xl border text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/40 focus:border-indigo-400 transition-all ${
-                  errors.turma ? "border-red-300 bg-red-50/50" : "border-gray-200 bg-gray-50/50"
-                }`}
-              />
-              {errors.turma && (
-                <p className="text-red-500 text-xs mt-1">{errors.turma}</p>
               )}
             </div>
 
