@@ -16,15 +16,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={inter.className} style={{ backgroundColor: "#f8fafc", minHeight: "100vh" }}>
-        <header className="bg-white border-b border-gray-200 shadow-sm">
-          <div className="max-w-4xl mx-auto px-4 py-4 flex items-center gap-3">
-            <span className="text-2xl">📚</span>
+      <body className={inter.className}>
+        <header className="bg-white/80 backdrop-blur-md border-b border-gray-200/50 sticky top-0 z-50">
+          <div className="max-w-4xl mx-auto px-4 py-3 flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-blue-600 flex items-center justify-center shadow-md shadow-indigo-200">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg>
+            </div>
             <div>
-              <h1 className="text-base font-bold text-gray-800 leading-tight">
+              <h1 className="text-sm font-bold text-gray-800 leading-tight">
                 Prova Online — Análise de Sistemas
               </h1>
-              <p className="text-sm text-blue-600 font-medium">2INF ETPC</p>
+              <p className="text-xs text-indigo-600 font-semibold">2INF ETPC</p>
             </div>
           </div>
         </header>
@@ -33,8 +35,8 @@ export default function RootLayout({
           {children}
         </main>
 
-        <footer className="border-t border-gray-200 bg-white mt-12">
-          <div className="max-w-4xl mx-auto px-4 py-4 text-center text-sm text-gray-500">
+        <footer className="border-t border-gray-200/50 bg-white/60 backdrop-blur-sm mt-12">
+          <div className="max-w-4xl mx-auto px-4 py-4 text-center text-xs text-gray-400 font-medium">
             ETPC — Escola Técnica © 2026
           </div>
         </footer>
