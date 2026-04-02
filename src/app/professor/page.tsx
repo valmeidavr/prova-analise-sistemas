@@ -54,7 +54,13 @@ export default function ProfessorPage() {
         return;
       }
       const data = await res.json();
-      setResults(data.results);
+      setResults(
+        (data.results || []).map((r: Record<string, unknown>) => ({
+          ...r,
+          nota: Number(r.nota),
+          acertos: Number(r.acertos),
+        }))
+      );
     } catch {
       setError("Erro de conexão.");
     }

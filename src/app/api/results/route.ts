@@ -5,13 +5,13 @@ const PROFESSOR_PIN = '2INF2026';
 
 export async function POST(req: NextRequest) {
   try {
-    await initDB();
     const { pin } = await req.json();
 
     if (pin !== PROFESSOR_PIN) {
       return NextResponse.json({ error: 'PIN incorreto' }, { status: 401 });
     }
 
+    await initDB();
     const sql = getSql();
     const results = await sql`
       SELECT nome, email, turma, acertos, nota, created_at
