@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSql, initDB } from '@/lib/db';
 
-const PROFESSOR_PIN = process.env.PROFESSOR_PIN || '2INF2026';
+const PROFESSOR_PIN = '2INF2026';
 
 export async function POST(req: NextRequest) {
   try {

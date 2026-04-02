@@ -48,7 +48,8 @@ export default function ProfessorPage() {
         body: JSON.stringify({ pin }),
       });
       if (!res.ok) {
-        setError("PIN incorreto. Tente novamente.");
+        const data = await res.json().catch(() => ({}));
+        setError(res.status === 401 ? "PIN incorreto. Tente novamente." : data.error || "Erro no servidor.");
         setLoading(false);
         return;
       }
