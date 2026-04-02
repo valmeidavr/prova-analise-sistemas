@@ -1,8 +1,14 @@
 import { neon } from '@neondatabase/serverless';
 
-const sql = neon(process.env.DATABASE_URL!);
+function getSQL() {
+  if (!process.env.DATABASE_URL) {
+    throw new Error('DATABASE_URL não configurada');
+  }
+  return neon(process.env.DATABASE_URL);
+}
 
 export async function initDB() {
+  const sql = getSQL();
   await sql`
     CREATE TABLE IF NOT EXISTS quiz_results (
       id SERIAL PRIMARY KEY,
@@ -17,4 +23,6 @@ export async function initDB() {
   `;
 }
 
-export { sql };
+export function getSql() {
+  return getSQL();
+}

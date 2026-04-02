@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { sql, initDB } from '@/lib/db';
+import { getSql, initDB } from '@/lib/db';
 import { questions } from '@/lib/questions';
 
 export async function POST(req: NextRequest) {
   try {
     await initDB();
+    const sql = getSql();
     const { nome, email, turma, respostas } = await req.json();
 
     let acertos = 0;
